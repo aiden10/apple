@@ -3,9 +3,13 @@
 [ext_resource type="Script" uid="uid://bpnhae73ry0iq" path="res://world.gd" id="1_036b0"]
 [ext_resource type="PackedScene" uid="uid://dta1y70slh202" path="res://player.tscn" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://cu43a3xuktwyv" path="res://overlay.tscn" id="3_aqk2v"]
+[ext_resource type="Material" uid="uid://boxywlgrra14o" path="res://death.tres" id="3_dwbse"]
 [ext_resource type="PackedScene" uid="uid://dk3bbhfefkiva" path="res://apple.tscn" id="3_tlwt5"]
 
 [sub_resource type="Environment" id="Environment_gv5m4"]
+background_mode = 1
+background_color = Color(0.355314, 0.355314, 0.355314, 1)
+background_energy_multiplier = 16.0
 ambient_light_sky_contribution = 0.2
 glow_enabled = true
 glow_strength = 0.5
@@ -25,7 +29,7 @@ material = SubResource("StandardMaterial3D_f3sb7")
 size = Vector2(25, 400)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aqk2v"]
-size = Vector3(1, 20, 400)
+size = Vector3(1, 100, 400)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_aqk2v"]
 size = Vector2(400, 10)
@@ -71,22 +75,15 @@ height = 5.0
 radial_segments = 8
 rings = 8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_036b0"]
-transparency = 1
-albedo_color = Color(1, 0.290196, 0.219608, 0.196078)
-emission_enabled = true
-emission = Color(0.552941, 0, 0, 1)
-emission_energy_multiplier = 5.85
-
 [sub_resource type="BoxMesh" id="BoxMesh_036b0"]
-material = SubResource("StandardMaterial3D_036b0")
+material = ExtResource("3_dwbse")
 size = Vector3(30, 25, 3)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_036b0")
 
 [node name="Player" parent="." instance=ExtResource("1_fj7yv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 4.08974, -5.42471)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.41186, 3.97063, -2.66899)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gv5m4")
@@ -124,6 +121,8 @@ mesh = SubResource("PlaneMesh_036b0")
 
 [node name="Rot" type="Area3D" parent="Stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.0994)
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/Rot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34.3297)
@@ -169,8 +168,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34.5566)
 mesh = SubResource("BoxMesh_036b0")
 
 [node name="Apple" parent="." instance=ExtResource("3_tlwt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.61234, -13.305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150279, 4.61234, -13.0018)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Overlay" parent="CanvasLayer" instance=ExtResource("3_aqk2v")]
+
+[node name="ObstacleContainer" type="Node" parent="."]

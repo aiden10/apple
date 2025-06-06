@@ -9,7 +9,7 @@ func _ready() -> void:
 func apply_force(area: Area3D) -> void:
 	var apple: RigidBody3D = area.get_parent()
 	var direction: Vector3 = (global_position - apple.global_position).normalized()
-	apple.apply_central_impulse(direction * 50)
+	apple.hit(direction * Vector3(50, 50, 100))
 
 func stab() -> void:
 	if can_stab:

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 2
+const SPEED = 15.0
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 1.5
 var jump_velocity: float = 6.5
 var MOUSE_SENSITIVITY: float = 0.1
 var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
@@ -31,7 +31,7 @@ func _physics_process(delta):
 		if is_on_floor():
 			velocity.y += jump_velocity
 		elif not is_on_floor() and double_jump:
-			velocity.y += jump_velocity * 1.25
+			velocity.y += jump_velocity * 1.5
 			double_jump = false
 	
 	if Input.is_action_pressed("click"):
