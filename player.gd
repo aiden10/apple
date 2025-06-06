@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 15.0
+const SPEED = 10
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 1.5
 var jump_velocity: float = 6.5
 var MOUSE_SENSITIVITY: float = 0.1
@@ -21,6 +21,7 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func _physics_process(delta):
+		
 	update_camera(delta)
 
 	if not is_on_floor():
@@ -45,9 +46,8 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-	
 	move_and_slide()
-
+	
 func _input(event: InputEvent) -> void:
 	_mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
 	if _mouse_input:

@@ -8,3 +8,4 @@ func _physics_process(delta: float) -> void:
 func hit(force: Vector3):
 	apply_central_impulse(force)
 	hit_effect.emitting = true
+	$AudioStreamPlayer3D.play()

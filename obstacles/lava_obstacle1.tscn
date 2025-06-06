@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmwb84mqb7fvn"]
+[gd_scene load_steps=9 format=3 uid="uid://dmwb84mqb7fvn"]
 
 [ext_resource type="Script" uid="uid://be88huxtnx34j" path="res://obstacle.gd" id="1_w4mwd"]
 [ext_resource type="Material" uid="uid://boxywlgrra14o" path="res://death.tres" id="2_2c1xh"]
+[ext_resource type="Texture2D" uid="uid://b5dtwmjtu7as3" path="res://assets/bright-squares.png" id="3_2c1xh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gbfbk"]
 size = Vector3(25, 1, 25)
@@ -13,7 +14,14 @@ size = Vector3(25, 1, 25)
 [sub_resource type="BoxShape3D" id="BoxShape3D_wse8f"]
 size = Vector3(7, 1, 16)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yepvd"]
+albedo_texture = ExtResource("3_2c1xh")
+emission_enabled = true
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+
 [sub_resource type="BoxMesh" id="BoxMesh_ic0uy"]
+material = SubResource("StandardMaterial3D_yepvd")
 size = Vector3(7, 1, 16)
 
 [node name="LavaObstacle" type="Node3D"]

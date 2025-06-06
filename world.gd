@@ -7,11 +7,21 @@ extends Node3D
 var obstacle_distance: int = -25
 
 func _ready() -> void:
-	for i in range(1):
-		spawn_obstacle()
+	spawn_obstacle()
 		
-	rot.body_entered.connect(func(_body: Node3D): GameSignals.player_death.emit())
-	rot.area_entered.connect(func(_area: Area3D): GameSignals.player_death.emit())
+	rot.body_entered.connect(func(body: Node3D):
+		if body.name == "Apple" or body.name == "Player":
+			GameSignals.player_death.emit()
+		)
+	GameSignals.restart.connect(func():
+		for child in obstacle_container.get_children():
+			child.queue_free()
+		$Player.global_position = Vector3(0, 3, 0)
+		$Apple.global_position = Vector3(0, 3, -5)
+		stage.global_position = Vector3.ZERO
+		obstacle_distance = -25
+		spawn_obstacle()
+		)
 
 func spawn_obstacle() -> void:
 	var obstacle_scene: PackedScene = obstacles.pick_random()
@@ -24,7 +34,7 @@ func spawn_obstacle() -> void:
 			child.queue_free()
 
 func _physics_process(delta: float) -> void:
-	stage.global_position.z -= 0.1
+	stage.global_position.z -= 0.03
 	if $Player.global_position.z < obstacle_distance + 75:
 		spawn_obstacle()
 		
