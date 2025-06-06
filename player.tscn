@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://dta1y70slh202"]
+
+[ext_resource type="Script" uid="uid://be5aqtas781o7" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://bldtiin8wowvl" path="res://spear.gd" id="2_onrkg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+radius = 0.3
+height = 3.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_rfb2o"]
+size = Vector3(0.1, 2, 0.1)
+
+[sub_resource type="Animation" id="Animation_qux3b"]
+resource_name = "stab"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.389, -0.1, 0, 1, 1, 0.206, -0.1, -100)
+
+[sub_resource type="Animation" id="Animation_rfb2o"]
+length = 0.5
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.001, 1, 0.389, 0.3, 2, 0.5, 1, 0.389, -0.1, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f1ptq"]
+_data = {
+&"RESET": SubResource("Animation_rfb2o"),
+&"stab": SubResource("Animation_qux3b")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4flbx"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.677966, 0)
+current = true
+
+[node name="Spear" type="StaticBody3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.389, -0.1, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_onrkg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Spear"]
+shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/Spear"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0397701, -1.73841e-09)
+mesh = SubResource("BoxMesh_rfb2o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/Spear"]
+reset_on_save = false
+libraries = {
+&"": SubResource("AnimationLibrary_f1ptq")
+}
+
+[node name="CooldownTimer" type="Timer" parent="Camera3D/Spear"]
+wait_time = 0.5
+
+[node name="Hitbox" type="Area3D" parent="Camera3D/Spear"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Spear/Hitbox"]
+shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_4flbx")
+skeleton = NodePath("")

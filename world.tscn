@@ -1,0 +1,176 @@
+[gd_scene load_steps=18 format=3 uid="uid://bop8h6a3v78so"]
+
+[ext_resource type="Script" uid="uid://bpnhae73ry0iq" path="res://world.gd" id="1_036b0"]
+[ext_resource type="PackedScene" uid="uid://dta1y70slh202" path="res://player.tscn" id="1_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://cu43a3xuktwyv" path="res://overlay.tscn" id="3_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://dk3bbhfefkiva" path="res://apple.tscn" id="3_tlwt5"]
+
+[sub_resource type="Environment" id="Environment_gv5m4"]
+ambient_light_sky_contribution = 0.2
+glow_enabled = true
+glow_strength = 0.5
+glow_bloom = 0.5
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.1
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_f3sb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3sb7"]
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.8
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fj7yv"]
+material = SubResource("StandardMaterial3D_f3sb7")
+size = Vector2(25, 400)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aqk2v"]
+size = Vector3(1, 20, 400)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_aqk2v"]
+size = Vector2(400, 10)
+orientation = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_036b0"]
+flip_faces = true
+size = Vector2(400, 10)
+orientation = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_036b0"]
+size = Vector3(35, 30, 2)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aqk2v"]
+inherit_velocity_ratio = 1.0
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+radial_velocity_min = 2.99998
+radial_velocity_max = 3.99998
+gravity = Vector3(2, 18, -12)
+radial_accel_min = 2.0
+radial_accel_max = 5.0
+scale_min = 0.5
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+turbulence_enabled = true
+turbulence_noise_speed_random = 4.0
+turbulence_initial_displacement_min = -10.0
+turbulence_initial_displacement_max = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwbse"]
+albedo_color = Color(0, 0.729412, 0, 1)
+emission_enabled = true
+emission = Color(0.597372, 0.632989, 0.298948, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_pkg7o"]
+material = SubResource("StandardMaterial3D_dwbse")
+radius = 4.0
+height = 5.0
+radial_segments = 8
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_036b0"]
+transparency = 1
+albedo_color = Color(1, 0.290196, 0.219608, 0.196078)
+emission_enabled = true
+emission = Color(0.552941, 0, 0, 1)
+emission_energy_multiplier = 5.85
+
+[sub_resource type="BoxMesh" id="BoxMesh_036b0"]
+material = SubResource("StandardMaterial3D_036b0")
+size = Vector3(30, 25, 3)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_036b0")
+
+[node name="Player" parent="." instance=ExtResource("1_fj7yv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 4.08974, -5.42471)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gv5m4")
+
+[node name="Stage" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34.8848)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StaticBody3D"]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_f3sb7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -178.919)
+mesh = SubResource("PlaneMesh_fj7yv")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Stage"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6453, 0, -145.365)
+shape = SubResource("BoxShape3D_aqk2v")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Stage/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0198, 0, -145.365)
+shape = SubResource("BoxShape3D_aqk2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.946, -144.656)
+mesh = SubResource("PlaneMesh_aqk2v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Stage/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.365, 4.42368, -144.656)
+mesh = SubResource("PlaneMesh_036b0")
+
+[node name="Rot" type="Area3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.0994)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/Rot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34.3297)
+shape = SubResource("BoxShape3D_036b0")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Stage/Rot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37968, 0.14212, 39.0083)
+amount = 128
+lifetime = 2.0
+speed_scale = 0.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_aqk2v")
+draw_pass_1 = SubResource("SphereMesh_pkg7o")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Stage/Rot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.88481, 1.35671, 39.0083)
+amount = 64
+lifetime = 2.0
+speed_scale = 0.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_aqk2v")
+draw_pass_1 = SubResource("SphereMesh_pkg7o")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Stage/Rot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.99777, 2.10806, 39.0083)
+amount = 64
+lifetime = 2.0
+speed_scale = 0.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_aqk2v")
+draw_pass_1 = SubResource("SphereMesh_pkg7o")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Stage/Rot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13215, 38.4389)
+light_color = Color(0.596078, 0.631373, 0.298039, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_size = 1.0
+omni_range = 15.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/Rot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 34.5566)
+mesh = SubResource("BoxMesh_036b0")
+
+[node name="Apple" parent="." instance=ExtResource("3_tlwt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.61234, -13.305)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Overlay" parent="CanvasLayer" instance=ExtResource("3_aqk2v")]

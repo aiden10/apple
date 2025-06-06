@@ -1,0 +1,12 @@
+
+
+A game about hitting an apple as far down the hall as possible while avoiding obstacles and the encroaching rot.
+
+As apple moves along, fog color increases in a 1:1:4 rgb ratio.
+
+Adding obstacles:
+    Create obstacle scenes which have scripts attached which will emit game over signal
+    Occasionally add these obstacles to the world scene 
+
+Stick or club to hit the apple with
+Game over screen and restart button

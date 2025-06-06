@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://dk3bbhfefkiva"]
+
+[ext_resource type="Script" uid="uid://dpmsqjfeutej7" path="res://apple.gd" id="1_3ed3y"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bpemt"]
+radius = 0.25
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3ed3y"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n78qv"]
+in_3d_space = true
+noise = SubResource("FastNoiseLite_3ed3y")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_whgpf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xniv1"]
+noise = SubResource("FastNoiseLite_whgpf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ed3y"]
+albedo_color = Color(1, 0.196078, 0.164706, 1)
+albedo_texture = SubResource("NoiseTexture2D_n78qv")
+roughness_texture = SubResource("NoiseTexture2D_xniv1")
+roughness_texture_channel = 4
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_n78qv"]
+material = SubResource("StandardMaterial3D_3ed3y")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_whgpf"]
+albedo_color = Color(0.526286, 0.267948, 0.100456, 1)
+emission = Color(0.784314, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xniv1"]
+material = SubResource("StandardMaterial3D_whgpf")
+size = Vector3(0.01, 0.1, 0.01)
+
+[node name="Apple" type="RigidBody3D"]
+collision_layer = 2
+linear_damp = 2.0
+script = ExtResource("1_3ed3y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_bpemt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_n78qv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302229, 0)
+mesh = SubResource("BoxMesh_xniv1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0399016, 0)
+light_color = Color(1, 0.585707, 0.523946, 1)
+light_energy = 0.1
+light_size = 100.0
+light_specular = 0.0
+omni_range = 1000.0
+omni_attenuation = 2.0
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_bpemt")
