@@ -3,6 +3,9 @@ extends Control
 @onready var apple_distance: Label = $AppleInfo/VBoxContainer/AppleDistance
 @onready var rot_distance: Label = $RotInfo/VBoxContainer/RotDistance
 @onready var rot_speed: Label = $RotInfo/VBoxContainer/RotSpeed
+@onready var player_vel: Label = $PlayerInfo/VBoxContainer/PlayerSpeed
+@onready var dash_info: Label = $PlayerInfo/VBoxContainer/Dash
+@onready var coins: Label = $PlayerInfo/VBoxContainer/Coins
 @onready var sens_slider: HSlider = $Paused/Options/VBoxContainer2/Sens
 
 func _ready() -> void:
@@ -10,6 +13,10 @@ func _ready() -> void:
 	$GameOver/VBoxContainer/RestartButton.pressed.connect(restart)
 	sens_slider.value = Options.mouse_sens
 	sens_slider.drag_ended.connect(func(_value: float): Options.mouse_sens = sens_slider.value)
+	GameSignals.prompt.connect(update_prompt)
+
+func update_prompt(prompt: String) -> void:
+	$Prompt.text = prompt
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):
@@ -25,6 +32,12 @@ func _process(_delta: float) -> void:
 	apple_distance.text = str(snapped((GameState.apple_position.z + 5) * -1, 0.1)) + "m traveled"
 	rot_distance.text = str(snapped(abs(GameState.player_position.z - GameState.rot_position.z), 0.1)) + "m away"
 	rot_speed.text = str(snapped(GameState.rot_speed, 0.001)) + "m/s"
+	player_vel.text = str(snapped(GameState.player_velocity.length(), 0.001)) + "m/s"
+	coins.text = str(GameState.coins) + " coins"
+	if GameState.dash_time == 0:
+		dash_info.text = "dash ready"
+	else:
+		dash_info.text = "dash ready in " + str(snapped(GameState.dash_time, 0.01)) + "s"
 	
 func restart() -> void:
 	$GameOver.visible = false

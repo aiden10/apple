@@ -15,10 +15,12 @@ var _camera_rotation: Vector3
 @onready var spear: StaticBody3D = $Camera3D/Spear
 var bullet_scene: PackedScene
 var double_jump: bool = true
+var can_dash: bool = true
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
+	$DashCooldown.timeout.connect(func(): can_dash = true)
+
 func _physics_process(delta):
 		
 	update_camera(delta)
@@ -36,7 +38,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("click"):
 		spear.stab()
-	
+		
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -45,6 +47,19 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	if can_dash and Input.is_action_pressed("dash"):
+		input_dir = Input.get_vector("left", "right", "up", "down")
+		
+		if input_dir != Vector2.ZERO:
+			var dash_direction = transform.basis * Vector3(input_dir.x, 0, input_dir.y)
+			velocity.x += dash_direction.x * GameState.dash_speed
+			velocity.z += dash_direction.z * GameState.dash_speed
+		
+			can_dash = false
+			$DashCooldown.start()
+	GameState.player_velocity = velocity
+	GameState.dash_time = $DashCooldown.time_left
 	move_and_slide()
 	
 func _input(event: InputEvent) -> void:

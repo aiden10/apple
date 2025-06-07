@@ -8,4 +8,5 @@ func _physics_process(delta: float) -> void:
 func hit(force: Vector3):
 	apply_central_impulse(force)
 	hit_effect.emitting = true
+	$AudioStreamPlayer3D.pitch_scale = randf_range(0.5, 1.5)
 	$AudioStreamPlayer3D.play()

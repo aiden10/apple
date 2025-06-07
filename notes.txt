@@ -3,8 +3,6 @@ A game about hitting an apple as far down the hall as possible while avoiding ob
 
 As apple moves along, fog color increases in a 1:1:4 rgb ratio.
 
-Dash?
-
 Powerups
     Coins + Vending machine?
     Speed

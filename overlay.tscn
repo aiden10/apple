@@ -17,12 +17,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nv86q")
 
+[node name="Prompt" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.55
+anchor_right = 0.5
+anchor_bottom = 0.55
+offset_left = -50.5
+offset_top = -11.5
+offset_right = 50.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_pct6n")
+theme_override_font_sizes/font_size = 16
+
 [node name="AppleInfo" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 60.0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AppleInfo"]
 layout_mode = 2
@@ -45,6 +62,54 @@ theme_override_fonts/font = ExtResource("2_2kreh")
 theme_override_font_sizes/font_size = 12
 text = "0m traveled"
 
+[node name="PlayerInfo" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -68.0
+offset_right = 125.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerInfo"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PlayerInfo/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("2_2kreh")
+theme_override_font_sizes/font_size = 18
+text = "player info:"
+
+[node name="PlayerSpeed" type="Label" parent="PlayerInfo/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_2kreh")
+theme_override_font_sizes/font_size = 12
+text = "0m/s"
+
+[node name="Dash" type="Label" parent="PlayerInfo/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_2kreh")
+theme_override_font_sizes/font_size = 12
+text = "dash ready"
+
+[node name="Coins" type="Label" parent="PlayerInfo/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_2kreh")
+theme_override_font_sizes/font_size = 12
+text = "0 coins"
+
 [node name="RotInfo" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
@@ -53,8 +118,8 @@ anchor_right = 1.0
 offset_left = -340.0
 offset_bottom = 128.0
 grow_horizontal = 0
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RotInfo"]
 layout_mode = 2
