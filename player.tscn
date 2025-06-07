@@ -11,11 +11,22 @@ height = 3.0
 metallic = 1.0
 emission_enabled = true
 emission = Color(0.548963, 0.548963, 0.548963, 1)
+emission_energy_multiplier = 0.5
 refraction_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_rfb2o"]
 material = SubResource("StandardMaterial3D_onrkg")
 size = Vector3(0.1, 2, 0.1)
+
+[sub_resource type="Animation" id="Animation_rfb2o"]
+length = 0.2
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.001, 1, 0.389, 0.3, 2, 0.2, 1, 0.389, -0.1, 0)
 
 [sub_resource type="Animation" id="Animation_qux3b"]
 resource_name = "stab"
@@ -28,16 +39,6 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0.389, -0.1, 0, 0.5, 1, 0.206, -0.1, -100)
 
-[sub_resource type="Animation" id="Animation_rfb2o"]
-length = 0.2
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0.001, 1, 0.389, 0.3, 2, 0.2, 1, 0.389, -0.1, 0)
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f1ptq"]
 _data = {
 &"RESET": SubResource("Animation_rfb2o"),
@@ -45,6 +46,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+radius = 0.4
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4flbx"]
 

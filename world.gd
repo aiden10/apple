@@ -24,6 +24,7 @@ func restart() -> void:
 	$Apple.linear_velocity = Vector3.ZERO
 	$Apple.angular_velocity = Vector3.ZERO
 	stage.global_position = Vector3.ZERO
+	GameState.rot_speed = 0.03
 	obstacle_distance = 25
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().paused = false
@@ -39,7 +40,10 @@ func spawn_obstacle() -> void:
 			child.queue_free()
 
 func _physics_process(delta: float) -> void:
-	stage.global_position.z -= 0.03
+	stage.global_position.z -= GameState.rot_speed
+	GameState.rot_position = $Stage/Rot.global_position
+	GameState.player_position = $Player.global_position
 	if $Player.global_position.z < obstacle_distance + 75:
 		spawn_obstacle()
+	GameState.rot_speed += delta / 1000
 		

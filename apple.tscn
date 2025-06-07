@@ -18,11 +18,13 @@ radius = 0.35
 noise = SubResource("FastNoiseLite_whgpf")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ed3y"]
+render_priority = 100
 albedo_color = Color(1, 0.196078, 0.164706, 1)
 roughness_texture = SubResource("NoiseTexture2D_xniv1")
 roughness_texture_channel = 4
 emission_enabled = true
 emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 2.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_n78qv"]
 material = SubResource("StandardMaterial3D_3ed3y")
@@ -55,7 +57,7 @@ emission = Color(0.784314, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xniv1"]
 material = SubResource("StandardMaterial3D_whgpf")
-size = Vector3(0.01, 0.1, 0.01)
+size = Vector3(0.03, 0.2, 0.03)
 
 [node name="Apple" type="RigidBody3D"]
 collision_layer = 2

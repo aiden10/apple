@@ -3,7 +3,6 @@ extends CharacterBody3D
 const SPEED = 10
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 1.5
 var jump_velocity: float = 6.5
-var MOUSE_SENSITIVITY: float = 0.1
 var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
 var TILT_UPPER_LIMIT := deg_to_rad(90.0)
 var _mouse_input: bool = false
@@ -32,7 +31,7 @@ func _physics_process(delta):
 		if is_on_floor():
 			velocity.y += jump_velocity
 		elif not is_on_floor() and double_jump:
-			velocity.y += jump_velocity * 1.5
+			velocity.y += jump_velocity + 3
 			double_jump = false
 	
 	if Input.is_action_pressed("click"):
@@ -49,10 +48,12 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _input(event: InputEvent) -> void:
+	if (Input.mouse_mode != Input.MOUSE_MODE_CAPTURED) and event is InputEventMouseButton: 
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	_mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
 	if _mouse_input:
-		_rotation_input = -event.relative.x * MOUSE_SENSITIVITY
-		_tilt_input = -event.relative.y * MOUSE_SENSITIVITY
+		_rotation_input = -event.relative.x * Options.mouse_sens
+		_tilt_input = -event.relative.y * Options.mouse_sens
 		
 func update_camera(delta) -> void:
 	_mouse_rotation.x += _tilt_input * delta

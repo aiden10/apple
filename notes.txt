@@ -1,9 +1,23 @@
 
-
 A game about hitting an apple as far down the hall as possible while avoiding obstacles and the encroaching rot.
 
 As apple moves along, fog color increases in a 1:1:4 rgb ratio.
 
+Dash?
+
 Powerups
+    Coins + Vending machine?
+    Speed
+    Jump height
+    Spear power
+    Spear cooldown
+    Lighter apple
+
+    Apple types (1 at a time):
+        Antigrav apple
+        Apple recall
+        Ghost apple (pass through walls)
+        Golden apple (drops coin when hit)
+
 More obstacles
 
