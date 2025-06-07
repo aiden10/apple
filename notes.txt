@@ -6,5 +6,4 @@ As apple moves along, fog color increases in a 1:1:4 rgb ratio.
 
 Powerups
 More obstacles
-Game over screen and restart button
 

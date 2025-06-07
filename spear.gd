@@ -9,7 +9,7 @@ func _ready() -> void:
 func apply_force(area: Area3D) -> void:
 	var apple: RigidBody3D = area.get_parent()
 	var direction: Vector3 = (global_position - apple.global_position).normalized()
-	direction.y += randf()
+	direction.y += max(0.2, randf())
 	apple.hit(direction * Vector3(50, 50, 100))
 
 func stab() -> void:

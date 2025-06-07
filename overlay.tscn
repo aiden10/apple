@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cu43a3xuktwyv"]
+[gd_scene load_steps=6 format=3 uid="uid://cu43a3xuktwyv"]
 
 [ext_resource type="Script" uid="uid://b5poq6vo0fw76" path="res://overlay.gd" id="1_nv86q"]
+[ext_resource type="FontFile" uid="uid://bts3vlsd5v4nk" path="res://assets/Chicago.ttf" id="2_2kreh"]
 [ext_resource type="Texture2D" uid="uid://ddhjtc48ruskw" path="res://assets/crosshair.png" id="2_42nn7"]
+[ext_resource type="FontFile" uid="uid://dao18ea4tolcf" path="res://assets/RobotoMono-Medium.ttf" id="4_pct6n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42nn7"]
 
 [node name="Overlay" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +23,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_2kreh")
 theme_override_font_sizes/font_size = 48
 text = "0"
 
@@ -74,21 +78,66 @@ grow_vertical = 2
 theme_override_constants/separation = 25
 
 [node name="Label" type="Label" parent="GameOver/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.639216, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_2kreh")
 theme_override_font_sizes/font_size = 84
 text = "SPOILED"
 horizontal_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="GameOver/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_pct6n")
 theme_override_font_sizes/font_size = 20
-text = "the apple stayed fresh for 1 metres"
+text = "the apple stayed fresh for n metres"
 horizontal_alignment = 1
 
 [node name="RestartButton" type="Button" parent="GameOver/VBoxContainer"]
 process_mode = 2
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_pct6n")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_42nn7")
 text = "restart?"
+
+[node name="Paused" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Paused"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0745098, 0.0745098, 0.0745098, 0.588235)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Paused/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2kreh")
+theme_override_font_sizes/font_size = 64
+text = "PAUSED"

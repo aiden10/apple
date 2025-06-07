@@ -1,8 +1,13 @@
-[gd_scene load_steps=13 format=4 uid="uid://dk3bbhfefkiva"]
+[gd_scene load_steps=14 format=4 uid="uid://dk3bbhfefkiva"]
 
 [ext_resource type="Script" uid="uid://dpmsqjfeutej7" path="res://apple.gd" id="1_3ed3y"]
 [ext_resource type="PackedScene" uid="uid://hbtosuf6ocp3" path="res://hitEffect.tscn" id="2_n78qv"]
 [ext_resource type="AudioStream" uid="uid://cw3fc1b0twwyj" path="res://assets/hit.mp3" id="3_whgpf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_whgpf"]
+friction = 0.5
+rough = true
+bounce = 0.9
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bpemt"]
 radius = 0.35
@@ -55,7 +60,7 @@ size = Vector3(0.01, 0.1, 0.01)
 [node name="Apple" type="RigidBody3D"]
 collision_layer = 2
 mass = 2.0
-gravity_scale = 2.0
+physics_material_override = SubResource("PhysicsMaterial_whgpf")
 linear_damp = 2.0
 angular_damp = 2.0
 script = ExtResource("1_3ed3y")
@@ -72,15 +77,6 @@ mesh = SubResource("ArrayMesh_whgpf")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302229, 0)
 mesh = SubResource("BoxMesh_xniv1")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0399016, 0)
-light_color = Color(1, 0.585707, 0.523946, 1)
-light_energy = 0.1
-light_size = 100.0
-light_specular = 0.0
-omni_range = 1000.0
-omni_attenuation = 2.0
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 2
