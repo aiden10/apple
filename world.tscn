@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bop8h6a3v78so"]
+[gd_scene load_steps=24 format=4 uid="uid://bop8h6a3v78so"]
 
 [ext_resource type="Script" uid="uid://bpnhae73ry0iq" path="res://world.gd" id="1_036b0"]
 [ext_resource type="PackedScene" uid="uid://dta1y70slh202" path="res://player.tscn" id="1_fj7yv"]
@@ -30,6 +30,9 @@ refraction_scale = 0.0
 [sub_resource type="PlaneMesh" id="PlaneMesh_fj7yv"]
 material = SubResource("StandardMaterial3D_f3sb7")
 size = Vector2(25, 1000)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dwbse"]
+plane = Plane(0, -1, 0, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dwbse"]
 material = SubResource("StandardMaterial3D_f3sb7")
@@ -122,12 +125,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -446.181)
 mesh = SubResource("PlaneMesh_fj7yv")
 
 [node name="Ceiling" type="StaticBody3D" parent="Stage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/Ceiling"]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 13.9775, 0)
-shape = SubResource("WorldBoundaryShape3D_f3sb7")
-disabled = true
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_dwbse")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/Ceiling"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -446.181)
@@ -200,7 +202,6 @@ max_distance = 50.0
 
 [node name="Apple" parent="." instance=ExtResource("3_tlwt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -5)
-gravity_scale = 1.5
 angular_damp = 1.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

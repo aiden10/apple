@@ -63,6 +63,35 @@ theme_override_fonts/font = ExtResource("2_2kreh")
 theme_override_font_sizes/font_size = 12
 text = "0m traveled"
 
+[node name="AppleCount" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 60.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AppleCount"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="AppleCount/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("2_2kreh")
+theme_override_font_sizes/font_size = 18
+text = "apple info:"
+
+[node name="AppleCount" type="Label" parent="AppleCount/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_2kreh")
+theme_override_font_sizes/font_size = 12
+text = "0 apples"
+
 [node name="PlayerInfo" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
