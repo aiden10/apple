@@ -14,12 +14,17 @@ func _ready() -> void:
 	sens_slider.value = Options.mouse_sens
 	sens_slider.drag_ended.connect(func(_value: float): Options.mouse_sens = sens_slider.value)
 	GameSignals.prompt.connect(update_prompt)
-
+	GameSignals.vending_interact.connect(func():
+		get_tree().paused = true
+		$ShopInterface.visible = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		)
+	
 func update_prompt(prompt: String) -> void:
 	$Prompt.text = prompt
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and !$ShopInterface.visible:
 		get_tree().paused = !get_tree().paused
 		if get_tree().paused:
 			$Paused.visible = true

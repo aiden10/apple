@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cw3fc1b0twwyj" path="res://assets/hit.mp3" id="3_whgpf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_whgpf"]
-friction = 0.5
+friction = 0.8
 rough = true
 bounce = 0.9
 

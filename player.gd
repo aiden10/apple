@@ -31,9 +31,9 @@ func _physics_process(delta):
 		double_jump = true
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
-			velocity.y += jump_velocity
+			velocity.y += jump_velocity * ((GameState.jump_inc * GameState.jump_stat) + 1)
 		elif not is_on_floor() and double_jump:
-			velocity.y += jump_velocity + 3
+			velocity.y += jump_velocity + 3 * ((GameState.jump_inc * GameState.jump_stat) + 1)
 			double_jump = false
 	
 	if Input.is_action_pressed("click"):
@@ -42,8 +42,8 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * SPEED * ((GameState.speed_inc * GameState.speed_stat) + 1)
+		velocity.z = direction.z * SPEED * ((GameState.speed_inc * GameState.speed_stat) + 1)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -53,11 +53,13 @@ func _physics_process(delta):
 		
 		if input_dir != Vector2.ZERO:
 			var dash_direction = transform.basis * Vector3(input_dir.x, 0, input_dir.y)
-			velocity.x += dash_direction.x * GameState.dash_speed
-			velocity.z += dash_direction.z * GameState.dash_speed
+			velocity.x += dash_direction.x * GameState.dash_speed * ((GameState.dash_distance_stat * GameState.dash_dist_inc) + 1)
+			velocity.z += dash_direction.z * GameState.dash_speed * ((GameState.dash_distance_stat * GameState.dash_dist_inc) + 1)
 		
 			can_dash = false
+			$DashCooldown.wait_time = 3.0 - (GameState.dash_cooldown_inc * GameState.dash_cooldown_stat)
 			$DashCooldown.start()
+	
 	GameState.player_velocity = velocity
 	GameState.dash_time = $DashCooldown.time_left
 	move_and_slide()

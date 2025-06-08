@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=4 uid="uid://btdqfsyktr5n8"]
+[gd_scene load_steps=10 format=4 uid="uid://btdqfsyktr5n8"]
 
 [ext_resource type="Script" uid="uid://bolr6ejad7sj0" path="res://vending_machine.gd" id="1_3c7xi"]
 [ext_resource type="Texture2D" uid="uid://cx8umaaqexsdx" path="res://assets/vending-machine_apple.jpg" id="2_v3vpy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6tfdt"]
 size = Vector3(2, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3vpy"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3c7xi"]
 _surfaces = [{
@@ -13,6 +17,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 36,
 "index_data": PackedByteArray("AAACAAEAAAABAAMABAAGAAUABAAFAAcACAAKAAkACAAJAAsADAAOAA0ADAANAA8AEAASABEAEAARABMAFAAWABUAFAAVABcA"),
+"material": SubResource("StandardMaterial3D_v3vpy"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 24,

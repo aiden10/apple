@@ -4,8 +4,9 @@ extends RigidBody3D
 
 func _physics_process(delta: float) -> void:
 	GameState.apple_position = global_position
-	
+
 func hit(force: Vector3):
+	physics_material_override.friction = 0.8 - (GameState.apple_roll_inc * GameState.apple_roll_stat)
 	apply_central_impulse(force)
 	hit_effect.emitting = true
 	$AudioStreamPlayer3D.pitch_scale = randf_range(0.5, 1.5)

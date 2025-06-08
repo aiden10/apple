@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu43a3xuktwyv"]
+[gd_scene load_steps=7 format=3 uid="uid://cu43a3xuktwyv"]
 
 [ext_resource type="Script" uid="uid://b5poq6vo0fw76" path="res://overlay.gd" id="1_nv86q"]
 [ext_resource type="FontFile" uid="uid://bts3vlsd5v4nk" path="res://assets/Chicago.ttf" id="2_2kreh"]
 [ext_resource type="Texture2D" uid="uid://ddhjtc48ruskw" path="res://assets/crosshair.png" id="2_42nn7"]
 [ext_resource type="FontFile" uid="uid://dao18ea4tolcf" path="res://assets/RobotoMono-Medium.ttf" id="4_pct6n"]
+[ext_resource type="PackedScene" uid="uid://wnaspdlvi73m" path="res://shopInterface.tscn" id="5_pct6n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42nn7"]
 
@@ -327,3 +328,7 @@ min_value = 0.01
 max_value = 1.0
 step = 0.05
 value = 0.11
+
+[node name="ShopInterface" parent="." instance=ExtResource("5_pct6n")]
+visible = false
+layout_mode = 1

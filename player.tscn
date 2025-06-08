@@ -94,7 +94,7 @@ mesh = SubResource("CapsuleMesh_4flbx")
 skeleton = NodePath("")
 
 [node name="DashCooldown" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
