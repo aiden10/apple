@@ -11,6 +11,7 @@ signal recurring_purchase
 signal ghost_purchase
 signal gold_purchase
 signal invalid
+signal shop_exit
 
 signal antigrav_use
 signal recall

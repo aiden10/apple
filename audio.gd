@@ -1,18 +1,23 @@
 extends Node
 
 const coin = preload("res://assets/coin.wav")
+const purchase = preload("res://assets/purchase.wav")
+const exit = preload("res://assets/beep.wav")
 
 var audio_players: Array[AudioStreamPlayer] = []
 var sound_level: float = 100.0
 const POOL_SIZE = 4
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	for i in POOL_SIZE:
 		var player = AudioStreamPlayer.new()
 		add_child(player)
 		audio_players.append(player)
 
 	GameSignals.coin_pickup.connect(func(): play_sound(coin))
+	GameSignals.shop_exit.connect(func(): play_sound(exit, -10))
+	GameSignals.purchase.connect(func(): play_sound(purchase))
 	
 func set_master_volume() -> void:
 	var normalized_volume = _get_normalized_volume(sound_level)

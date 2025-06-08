@@ -39,7 +39,6 @@ func _ready() -> void:
 	$Apples/Ghost/HBoxContainer/GhostCost.text = str(GHOST_APPLE_PRICE)
 	$Apples/Gold/HBoxContainer/GoldCost.text = str(GOLD_APPLE_PRICE)
 	
-	coin_label.text = str(GameState.coins)
 	GameSignals.purchase.connect(func():
 		coin_label.text = str(GameState.coins)
 		$CurrentVariety.text = "current variety: '" + GameState.apple_variety + "'"
@@ -65,6 +64,7 @@ func exit_shop() -> void:
 	get_tree().paused = false
 	visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	GameSignals.shop_exit.emit()
 	$AudioStreamPlayer.stop()
 
 func escape() -> void:

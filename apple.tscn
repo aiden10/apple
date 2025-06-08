@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=4 uid="uid://dk3bbhfefkiva"]
 
 [ext_resource type="Script" uid="uid://dpmsqjfeutej7" path="res://apple.gd" id="1_3ed3y"]
-[ext_resource type="PackedScene" uid="uid://hbtosuf6ocp3" path="res://hitEffect.tscn" id="2_n78qv"]
+[ext_resource type="PackedScene" uid="uid://hbtosuf6ocp3" path="res://hit_effect.tscn" id="2_n78qv"]
 [ext_resource type="Material" uid="uid://b2mj5676t1ybp" path="res://apple_outline.tres" id="2_xniv1"]
 [ext_resource type="AudioStream" uid="uid://cw3fc1b0twwyj" path="res://assets/hit.mp3" id="3_whgpf"]
 

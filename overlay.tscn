@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bts3vlsd5v4nk" path="res://assets/Chicago.ttf" id="2_2kreh"]
 [ext_resource type="Texture2D" uid="uid://ddhjtc48ruskw" path="res://assets/crosshair.png" id="2_42nn7"]
 [ext_resource type="FontFile" uid="uid://dao18ea4tolcf" path="res://assets/RobotoMono-Medium.ttf" id="4_pct6n"]
-[ext_resource type="PackedScene" uid="uid://wnaspdlvi73m" path="res://shopInterface.tscn" id="5_pct6n"]
+[ext_resource type="PackedScene" uid="uid://wnaspdlvi73m" path="res://shop_interface.tscn" id="5_pct6n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42nn7"]
 

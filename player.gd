@@ -17,6 +17,7 @@ var bullet_scene: PackedScene
 var double_jump: bool = true
 var can_dash: bool = true
 const RAY_LENGTH = 100
+var dash_tween: Tween
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -39,7 +40,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("click"):
 		spear.stab()
-		
+
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -56,8 +57,9 @@ func _physics_process(delta):
 			var dash_direction = transform.basis * Vector3(input_dir.x, 0, input_dir.y)
 			velocity.x += dash_direction.x * GameState.dash_speed * ((GameState.dash_distance_stat * GameState.dash_dist_inc) + 1)
 			velocity.z += dash_direction.z * GameState.dash_speed * ((GameState.dash_distance_stat * GameState.dash_dist_inc) + 1)
-		
+			$DashPlayer.play()
 			can_dash = false
+			camera_dash_effect()
 			$DashCooldown.wait_time = 3.0 - (GameState.dash_cooldown_inc * GameState.dash_cooldown_stat)
 			$DashCooldown.start()
 	
@@ -99,3 +101,29 @@ func update_camera(delta) -> void:
 
 	_rotation_input = 0.0
 	_tilt_input = 0.0
+
+func camera_dash_effect() -> void:
+	if dash_tween and dash_tween.is_valid():
+		dash_tween.kill()
+	
+	dash_tween = create_tween()
+	dash_tween.set_parallel(true)
+	
+	dash_tween.tween_property($Camera3D, "fov", 65, 0.08).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	dash_tween.tween_property($Camera3D, "fov", 75, 0.12).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).set_delay(0.08)
+	
+	var original_position = $Camera3D.position
+	var shake_intensity = 0.15
+	
+	dash_tween.tween_method(_shake_camera, 0.0, shake_intensity, 0.06)
+	dash_tween.tween_method(_shake_camera, shake_intensity, 0.0, 0.08).set_delay(0.06)
+	
+	dash_tween.tween_property($Camera3D, "position", original_position, 0.05).set_delay(0.14)
+
+func _shake_camera(intensity: float) -> void:
+	var offset = Vector3(
+		randf_range(-intensity, intensity),
+		randf_range(-intensity, intensity),
+		randf_range(-intensity * 0.5, intensity * 0.5)
+	)
+	$Camera3D.position = $Camera3D.position + offset

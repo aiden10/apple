@@ -18,6 +18,7 @@ func _ready() -> void:
 		get_tree().paused = true
 		$ShopInterface.visible = true
 		$ShopInterface/AudioStreamPlayer.play()
+		$ShopInterface/CoinContainer/HBoxContainer/CoinLabel.text = str(GameState.coins)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		)
 	

@@ -1,0 +1,138 @@
+[gd_scene load_steps=3 format=3 uid="uid://cud711vxaq00v"]
+
+[ext_resource type="PackedScene" uid="uid://dv5yr28rqd7ng" path="res://obstacles/static_platform.tscn" id="1_oof0j"]
+[ext_resource type="PackedScene" uid="uid://bsckvlhkat7pc" path="res://coin.tscn" id="2_x5pnb"]
+
+[node name="CoinTowers" type="Node3D"]
+
+[node name="Tower" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.89664, 0, 0)
+
+[node name="StaticPlatform" parent="Tower" instance=ExtResource("1_oof0j")]
+
+[node name="Coin" parent="Tower/StaticPlatform" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform2" parent="Tower" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Coin" parent="Tower/StaticPlatform2" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform3" parent="Tower" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+
+[node name="Coin" parent="Tower/StaticPlatform3" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform4" parent="Tower" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+
+[node name="Coin" parent="Tower/StaticPlatform4" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform5" parent="Tower" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+
+[node name="Coin" parent="Tower/StaticPlatform5" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform6" parent="Tower" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
+
+[node name="Coin" parent="Tower/StaticPlatform6" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="Tower2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00927734, 0, -6.18511)
+
+[node name="StaticPlatform" parent="Tower2" instance=ExtResource("1_oof0j")]
+
+[node name="Coin" parent="Tower2/StaticPlatform" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform2" parent="Tower2" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Coin" parent="Tower2/StaticPlatform2" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform3" parent="Tower2" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+
+[node name="Coin" parent="Tower2/StaticPlatform3" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform4" parent="Tower2" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+
+[node name="Coin" parent="Tower2/StaticPlatform4" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform5" parent="Tower2" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+
+[node name="Coin" parent="Tower2/StaticPlatform5" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform6" parent="Tower2" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
+
+[node name="Coin" parent="Tower2/StaticPlatform6" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="Tower3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.99552, 0, -6.18511)
+
+[node name="StaticPlatform" parent="Tower3" instance=ExtResource("1_oof0j")]
+
+[node name="Coin" parent="Tower3/StaticPlatform" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform2" parent="Tower3" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Coin" parent="Tower3/StaticPlatform2" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform3" parent="Tower3" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+
+[node name="Coin" parent="Tower3/StaticPlatform3" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform7" parent="Tower3" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65924, 9, 0)
+
+[node name="Coin" parent="Tower3/StaticPlatform7" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform8" parent="Tower3" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0452, 13.109, 0)
+
+[node name="Coin" parent="Tower3/StaticPlatform8" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform9" parent="Tower3" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0452, 4.38434, -9.2466)
+
+[node name="Coin" parent="Tower3/StaticPlatform9" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform4" parent="Tower3" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+
+[node name="Coin" parent="Tower3/StaticPlatform4" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform5" parent="Tower3" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+
+[node name="Coin" parent="Tower3/StaticPlatform5" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)
+
+[node name="StaticPlatform6" parent="Tower3" instance=ExtResource("1_oof0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
+
+[node name="Coin" parent="Tower3/StaticPlatform6" instance=ExtResource("2_x5pnb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14459, 0)

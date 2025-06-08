@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dovenspfld40m"]
+
+[ext_resource type="PackedScene" uid="uid://bsckvlhkat7pc" path="res://coin.tscn" id="1_jh1o7"]
+[ext_resource type="PackedScene" uid="uid://btdqfsyktr5n8" path="res://vending_machine.tscn" id="2_lm87i"]
+[ext_resource type="PackedScene" uid="uid://b5cr5cdm8q0aw" path="res://obstacles/lava.tscn" id="3_cwfxf"]
+[ext_resource type="PackedScene" uid="uid://dv5yr28rqd7ng" path="res://obstacles/static_platform.tscn" id="4_vdcyn"]
+
+[node name="Shop2" type="Node3D"]
+
+[node name="Coin" parent="." instance=ExtResource("1_jh1o7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0707868, 4.09505, -4.55057)
+
+[node name="VendingMachine" parent="." instance=ExtResource("2_lm87i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.368227, -4.58002)
+
+[node name="HurtBox" parent="." instance=ExtResource("3_cwfxf")]
+
+[node name="StaticPlatform" parent="." instance=ExtResource("4_vdcyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.61568)

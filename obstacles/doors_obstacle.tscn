@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjl2m75ghb1te"]
+[gd_scene load_steps=5 format=3 uid="uid://cjl2m75ghb1te"]
 
 [ext_resource type="Script" uid="uid://dcss0cymoeea7" path="res://obstacles/doors_obstacle.gd" id="1_ttjbw"]
+[ext_resource type="PackedScene" uid="uid://bsckvlhkat7pc" path="res://coin.tscn" id="2_jpana"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cmrj1"]
 size = Vector3(15, 20, 1)
@@ -53,3 +54,9 @@ shape = SubResource("BoxShape3D_cmrj1")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="d4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 mesh = SubResource("BoxMesh_ttjbw")
+
+[node name="Coin" parent="." instance=ExtResource("2_jpana")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5.79679)
+
+[node name="Coin2" parent="." instance=ExtResource("2_jpana")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -25.0562)

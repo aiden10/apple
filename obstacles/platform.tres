@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://18cc13byllrg"]
+
+[ext_resource type="Texture2D" uid="uid://b5dtwmjtu7as3" path="res://assets/bright-squares.png" id="1_owooe"]
+
+[resource]
+albedo_texture = ExtResource("1_owooe")
+emission_enabled = true
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true

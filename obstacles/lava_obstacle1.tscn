@@ -1,43 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmwb84mqb7fvn"]
+[gd_scene load_steps=6 format=3 uid="uid://dmwb84mqb7fvn"]
 
 [ext_resource type="Script" uid="uid://be88huxtnx34j" path="res://obstacles/lava_obstacle.gd" id="1_w4mwd"]
-[ext_resource type="Material" uid="uid://boxywlgrra14o" path="res://death.tres" id="2_2c1xh"]
-[ext_resource type="Texture2D" uid="uid://b5dtwmjtu7as3" path="res://assets/bright-squares.png" id="3_2c1xh"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gbfbk"]
-size = Vector3(25, 1, 40)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ioo17"]
-material = ExtResource("2_2c1xh")
-size = Vector3(25, 1, 40)
+[ext_resource type="PackedScene" uid="uid://b5cr5cdm8q0aw" path="res://obstacles/lava.tscn" id="2_2c1xh"]
+[ext_resource type="Material" uid="uid://18cc13byllrg" path="res://obstacles/platform.tres" id="3_2c1xh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wse8f"]
 size = Vector3(7, 1, 16)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yepvd"]
-albedo_texture = ExtResource("3_2c1xh")
-emission_enabled = true
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_triplanar = true
-
 [sub_resource type="BoxMesh" id="BoxMesh_ic0uy"]
-material = SubResource("StandardMaterial3D_yepvd")
+material = ExtResource("3_2c1xh")
 size = Vector3(7, 1, 16)
 
 [node name="LavaObstacle" type="Node3D"]
 script = ExtResource("1_w4mwd")
 
-[node name="HurtBox" type="Area3D" parent="."]
+[node name="HurtBox" parent="." instance=ExtResource("2_2c1xh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00147724, 0.255257, -0.0262425)
-collision_layer = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
-shape = SubResource("BoxShape3D_gbfbk")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="HurtBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00176144, -0.200919, 0.0393517)
-mesh = SubResource("BoxMesh_ioo17")
-skeleton = NodePath("../..")
 
 [node name="Platform" type="StaticBody3D" parent="."]
 

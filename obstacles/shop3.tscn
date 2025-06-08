@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cccilpn2dg2pt"]
+
+[ext_resource type="PackedScene" uid="uid://btdqfsyktr5n8" path="res://vending_machine.tscn" id="1_6bone"]
+
+[node name="Shop3" type="Node3D"]
+
+[node name="VendingMachine" parent="." instance=ExtResource("1_6bone")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 0, 0)

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcuw3t5dw5dwd"]
+
+[ext_resource type="PackedScene" uid="uid://bsckvlhkat7pc" path="res://coin.tscn" id="1_dovg0"]
+[ext_resource type="Material" uid="uid://18cc13byllrg" path="res://obstacles/platform.tres" id="2_ynrat"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ra5d"]
+size = Vector3(2, 10, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rk1ay"]
+material = ExtResource("2_ynrat")
+size = Vector3(2, 10, 2)
+
+[node name="CoinFormation1" type="Node3D"]
+
+[node name="Coin" parent="." instance=ExtResource("1_dovg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="Coin6" parent="." instance=ExtResource("1_dovg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -4)
+
+[node name="Coin2" parent="." instance=ExtResource("1_dovg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
+
+[node name="Coin3" parent="." instance=ExtResource("1_dovg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0)
+
+[node name="Coin4" parent="." instance=ExtResource("1_dovg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 0)
+
+[node name="Coin5" parent="." instance=ExtResource("1_dovg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 0)
+
+[node name="ShortPillar8" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShortPillar8"]
+shape = SubResource("BoxShape3D_3ra5d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ShortPillar8"]
+mesh = SubResource("BoxMesh_rk1ay")

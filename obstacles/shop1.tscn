@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb34s8ww1c10s"]
+
+[ext_resource type="Script" uid="uid://be88huxtnx34j" path="res://obstacles/lava_obstacle.gd" id="1_er3la"]
+[ext_resource type="PackedScene" uid="uid://dv5yr28rqd7ng" path="res://obstacles/static_platform.tscn" id="2_e4wwq"]
+[ext_resource type="PackedScene" uid="uid://bsckvlhkat7pc" path="res://coin.tscn" id="3_gee6l"]
+[ext_resource type="PackedScene" uid="uid://btdqfsyktr5n8" path="res://vending_machine.tscn" id="4_06vci"]
+[ext_resource type="Material" uid="uid://boxywlgrra14o" path="res://death.tres" id="5_mlvsb"]
+[ext_resource type="PackedScene" uid="uid://b5cr5cdm8q0aw" path="res://obstacles/lava.tscn" id="6_e4wwq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hxl5u"]
+size = Vector3(3, 10, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nthg7"]
+material = ExtResource("5_mlvsb")
+size = Vector3(3, 10, 3)
+
+[node name="Shop1" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_er3la")
+
+[node name="StaticPlatform" parent="." instance=ExtResource("2_e4wwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="StaticPlatform2" parent="." instance=ExtResource("2_e4wwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6, -5)
+
+[node name="StaticPlatform3" parent="." instance=ExtResource("2_e4wwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6, 5)
+
+[node name="StaticPlatform4" parent="." instance=ExtResource("2_e4wwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 10, 0)
+
+[node name="StaticPlatform5" parent="." instance=ExtResource("2_e4wwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.39976, 12.077, 0)
+
+[node name="StaticPlatform6" parent="." instance=ExtResource("2_e4wwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25022, 12.077, 0)
+
+[node name="Coin" parent="." instance=ExtResource("3_gee6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.95323, 11.236, 0.206841)
+
+[node name="Coin2" parent="." instance=ExtResource("3_gee6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27164, 13.3005, 0.127918)
+
+[node name="VendingMachine" parent="." instance=ExtResource("4_06vci")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.3953, 12.5642, 0.0683129)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5277, 10.282, -8.43534)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_hxl5u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("BoxMesh_nthg7")
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46284, 10.282, 8.39461)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+shape = SubResource("BoxShape3D_hxl5u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2"]
+mesh = SubResource("BoxMesh_nthg7")
+
+[node name="HurtBox" parent="." instance=ExtResource("6_e4wwq")]
+
+[node name="StaticPlatform7" parent="." instance=ExtResource("2_e4wwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94876e-07, 1.38525, -11.3214)
+
+[node name="Platform" parent="." instance=ExtResource("2_e4wwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.96533e-07, 1.38525, 11.3594)
+
+[node name="StaticPlatform9" parent="." instance=ExtResource("2_e4wwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.02562, 1.38525, 0.0697387)
