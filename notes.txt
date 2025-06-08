@@ -3,7 +3,7 @@ A game about hitting an apple as far down the hall as possible while avoiding ob
 
 As apple moves along, fog color increases in a 1:1:4 rgb ratio.
 
-Replace ghost apple
 More obstacles
     Coins 
     Vending machines
+Sound effects

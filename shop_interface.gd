@@ -6,22 +6,22 @@ var original_positions: Array = []
 
 const SPEED_PRICE: int = 3 
 const JUMP_PRICE: int = 3 
-const KNOCKBACK_PRICE: int = 3 
-const SPEAR_COOLDOWN_PRICE: int = 3 
+const KNOCKBACK_PRICE: int = 2 
+const SPEAR_COOLDOWN_PRICE: int = 1 
 const DASH_COOLDOWN_PRICE: int = 3 
-const DASH_DISTANCE_PRICE: int = 3 
-const APPLE_ROLL_COST: int = 3
+const DASH_DISTANCE_PRICE: int = 2 
+const APPLE_ROLL_COST: int = 1
 
-const GOLD_APPLE_PRICE: int = 10
-const GHOST_APPLE_PRICE: int = 10
-const ANTIGRAV_APPLE_PRICE: int = 10
-const RECURRING_APPLE_PRICE: int = 10
+const GOLD_APPLE_PRICE: int = 20
+const GHOST_APPLE_PRICE: int = 20
+const ANTIGRAV_APPLE_PRICE: int = 15
+const RECURRING_APPLE_PRICE: int = 6
 
 @onready var coin_label: Label = $CoinContainer/HBoxContainer/CoinLabel
 
 func _ready() -> void:
 	sprites = $BackgroundContainer.get_children()
-	
+	$AnimationPlayer.play("word")
 	for sprite in sprites:
 		sprite.modulate.a = 0.85
 		original_positions.append(sprite.position)
@@ -40,7 +40,10 @@ func _ready() -> void:
 	$Apples/Gold/HBoxContainer/GoldCost.text = str(GOLD_APPLE_PRICE)
 	
 	coin_label.text = str(GameState.coins)
-	GameSignals.purchase.connect(func(): coin_label.text = str(GameState.coins))
+	GameSignals.purchase.connect(func():
+		coin_label.text = str(GameState.coins)
+		$CurrentVariety.text = "current variety: '" + GameState.apple_variety + "'"
+	)
 	
 	$Upgrades/Speed.gui_input.connect(buy_speed)
 	$Upgrades/Jump.gui_input.connect(buy_jump)
@@ -62,10 +65,12 @@ func exit_shop() -> void:
 	get_tree().paused = false
 	visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$AudioStreamPlayer.stop()
 
 func escape() -> void:
 	if GameState.coins >= 100:
 		get_tree().paused = false
+		$AudioStreamPlayer.stop()
 		visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		get_tree().change_scene_to_file("res://ending.tscn")
@@ -85,7 +90,7 @@ func buy_antigrav(event: InputEvent) -> void:
 func buy_recurring(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if GameState.coins >= RECURRING_APPLE_PRICE:
-			GameState.apple_variety = "recurring"
+			GameState.apple_variety = "recall"
 			GameState.coins -= RECURRING_APPLE_PRICE
 			GameSignals.purchase.emit()
 			GameSignals.recurring_purchase.emit()
@@ -95,7 +100,7 @@ func buy_recurring(event: InputEvent) -> void:
 func buy_ghost(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if GameState.coins >= GHOST_APPLE_PRICE:
-			GameState.apple_variety = "ghost"
+			GameState.apple_variety = "spatial"
 			GameState.coins -= GHOST_APPLE_PRICE
 			GameSignals.purchase.emit()
 			GameSignals.ghost_purchase.emit()
@@ -179,6 +184,7 @@ func invalid_purchase() -> void:
 	var tween = create_tween()
 	tween.tween_property(coin_label, "modulate", Color(1, 0, 0, 1), 1)
 	tween.tween_property(coin_label, "modulate", Color(1, 1, 1, 1), 0.5)
+	GameSignals.invalid.emit()
 	
 func _physics_process(delta: float) -> void:
 	time += delta

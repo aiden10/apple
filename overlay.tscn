@@ -325,8 +325,10 @@ theme_override_fonts/font = ExtResource("4_pct6n")
 theme_override_font_sizes/font_size = 11
 text = "shoot (lmb)
 move (wasd)
+dash (shift)
 jump (space)
-double jump (space again)"
+double jump (space again)
+apple ability (q)"
 horizontal_alignment = 2
 
 [node name="Options" type="MarginContainer" parent="Paused"]

@@ -45,5 +45,5 @@ func _physics_process(delta: float) -> void:
 	GameState.player_position = $Player.global_position
 	if $Player.global_position.z < obstacle_distance + 75:
 		spawn_obstacle()
-	GameState.rot_speed += delta / 1000
+	GameState.rot_speed += delta / 10000
 		

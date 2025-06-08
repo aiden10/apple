@@ -25,13 +25,6 @@ func _get_normalized_volume(slider_value: float) -> float:
 	var volume_db = linear_to_db(curved_volume)
 	return min(volume_db, 0.0)
 
-func play_random(sounds: Array, volume_adjustment: float = 0.0) -> void:
-	var player = _get_available_player()
-	if player:
-		player.stream = sounds.pick_random()
-		player.volume_db = _get_normalized_volume(sound_level + volume_adjustment)
-		player.play()
-
 func play_sound(sound: AudioStream, volume_adjustment: float = 0.0) -> void:
 	var player = _get_available_player()
 	if player:

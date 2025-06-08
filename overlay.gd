@@ -17,6 +17,7 @@ func _ready() -> void:
 	GameSignals.vending_interact.connect(func():
 		get_tree().paused = true
 		$ShopInterface.visible = true
+		$ShopInterface/AudioStreamPlayer.play()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		)
 	
