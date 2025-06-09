@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=4 uid="uid://l26lre72pkju"]
+[gd_scene load_steps=24 format=4 uid="uid://l26lre72pkju"]
 
 [ext_resource type="PackedScene" uid="uid://dta1y70slh202" path="res://player.tscn" id="1_fsb5k"]
 [ext_resource type="Script" uid="uid://bksrfh5eilmmx" path="res://ending.gd" id="1_iggq8"]
 [ext_resource type="PackedScene" uid="uid://cu43a3xuktwyv" path="res://overlay.tscn" id="2_4jooh"]
 [ext_resource type="Texture2D" uid="uid://dulbkl51dawtg" path="res://assets/forest_texture.png" id="3_4jooh"]
+[ext_resource type="Texture2D" uid="uid://dolkrajykdhjn" path="res://assets/grass.png" id="3_k7rdy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j14t3"]
 sky_top_color = Color(0.45098, 0.690196, 1, 1)
@@ -19,6 +20,25 @@ background_mode = 2
 sky = SubResource("Sky_fsb5k")
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_iggq8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sy8ce"]
+albedo_color = Color(0.717647, 1, 0.384314, 1)
+albedo_texture = ExtResource("3_k7rdy")
+emission_enabled = true
+emission = Color(1, 0.243137, 0.0509804, 1)
+emission_energy_multiplier = 0.15
+normal_texture = ExtResource("3_k7rdy")
+heightmap_scale = 16.0
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("3_k7rdy")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uvbhr"]
+material = SubResource("StandardMaterial3D_sy8ce")
+size = Vector2(5000, 5000)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_whgpf"]
 
@@ -123,6 +143,9 @@ environment = SubResource("Environment_dmh3q")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_iggq8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_uvbhr")
 
 [node name="Apples" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.78124, 0, -9.82421)

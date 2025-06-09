@@ -26,7 +26,13 @@ func _ready() -> void:
 		if body.name == "Apple" or body.name == "Player":
 			GameSignals.player_death.emit()
 		)
+	load_effects()
 	GameSignals.restart.connect(restart)
+
+func load_effects() -> void:
+	$Coin/GPUParticles3D.emitting = true
+	get_tree().create_timer(1).timeout.connect($Coin.queue_free)
+	$Apple.hit_effect.emitting = true
 
 func restart() -> void:
 	for child in obstacle_container.get_children():

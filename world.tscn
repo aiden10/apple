@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://bop8h6a3v78so"]
+[gd_scene load_steps=24 format=4 uid="uid://bop8h6a3v78so"]
 
 [ext_resource type="Script" uid="uid://bpnhae73ry0iq" path="res://world.gd" id="1_036b0"]
 [ext_resource type="PackedScene" uid="uid://dta1y70slh202" path="res://player.tscn" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://cu43a3xuktwyv" path="res://overlay.tscn" id="3_aqk2v"]
 [ext_resource type="Material" uid="uid://boxywlgrra14o" path="res://death.tres" id="3_dwbse"]
 [ext_resource type="PackedScene" uid="uid://dk3bbhfefkiva" path="res://apple.tscn" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://bsckvlhkat7pc" path="res://coin.tscn" id="7_pkg7o"]
 
 [sub_resource type="Environment" id="Environment_gv5m4"]
 background_mode = 1
@@ -209,3 +210,6 @@ angular_damp = 1.5
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Overlay" parent="CanvasLayer" instance=ExtResource("3_aqk2v")]
+
+[node name="Coin" parent="." instance=ExtResource("7_pkg7o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.81354, 0)
